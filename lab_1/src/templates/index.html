@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Grid</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__logo logo">
+        <img
+          class="logo__image"
+          src="../images/icons/icon-logo.svg"
+          alt="logo"
+        />
+        <h3 class="logo__title">Grid</h3>
+      </div>
+      <nav class="header__navigation list">
+        <a class="list__link" href="">How it works</a>
+        <a class="list__link" href="">Who we are</a>
+        <a class="list__link" href="">What we do</a>
+        <a class="list__link" href="">Contact us</a>
+      </nav>
+      <button class="header__btn btn btn_primary">
+        <span class="btn__text btn__text_size_m">Sign In</span>
+      </button>
+    </header>
+    <main class="main">
+      <div class="main__introduction">
+        <div class="main__title-group">
+          <h1 class="main__title main__title_shadow main__title_size_l">
+            Combine <span class="main__title-underline">fine</span> images
+          </h1>
+          <h2 class="main__title main__title_size_s">To represent a product</h2>
+        </div>
+        <div class="main__card-container card-container">
+          <p
+            class="card-container__description card-container__description_size_s"
+          >
+            Use mixed grid with imagery, replace with your own photos and
+            descriptions
+          </p>
+          <!-- min-height: 183px;
+          max-height: 380px;
+          min-width: 224px;
+          max-width: 470px; -->
+          <div
+            class="card card_align-end"
+            style="background-image: url('../images/content/content_1.png')"
+          >
+            <h3 class="card__title card__title_size_m">Consider it done!</h3>
+          </div>
+          <!-- min-height: 223px;
+          max-height: 464px;
+          min-width: 130px;
+          max-width: 270px; -->
+          <div
+            class="card card_direction-column"
+            style="background-image: url('../images/content/content_2.png')"
+          >
+            <p class="card__description card__description_size_m">
+              We aimed to deliver HQ templates for Figma
+            </p>
+            <p class="card__description card__description_size_s">
+              Used by 123 people
+            </p>
+          </div>
+          <!-- min-height: 136px;
+          max-height: 284px;
+          min-width: 130px;
+          max-width: 270px; -->
+          <div
+            class="card"
+            style="background-image: url('../images/content/content_3.png')"
+          ></div>
+          <p
+            class="card-container__description card-container__description_size_s"
+          >
+            This is multipurpose grid, it fits for portfolio, services or agency
+            web site
+          </p>
+          <!-- min-height: 182px;
+          max-height: 356px;
+          min-width: 179px;
+          max-width: 370px; -->
+          <div
+            class="card"
+            style="background-image: url('../images/content/content_4.png')"
+          >
+            <h3 class="card__title card__title_size_m">See my goal?</h3>
+          </div>
+          <!-- min-height: 107px;
+          max-height: 222px;
+          min-width: 82px;
+          max-width: 170px; -->
+          <div
+            class="card"
+            style="background-image: url('../images/content/content_5.png')"
+          ></div>
+          <!-- min-height: 107px;
+          max-height: 222px;
+          min-width: 84px;
+          max-width: 170px; -->
+          <div
+            class="card"
+            style="background-image: url('../images/content/content_6.png')"
+          ></div>
+          <!-- min-height: 146px;
+          max-height: 222px;
+          min-width: 130px;
+          max-width: 170px; -->
+          <div
+            class="card"
+            style="background-image: url('../images/content/content_7.png')"
+          ></div>
+          <button class="card-container__btn btn btn_primary">
+            <span class="btn__text btn__text_size_s"> Learn more </span>
+          </button>
+        </div>
+      </div>
+      <div class="main__info">
+        <h4 class="main__title main__title_size_s">
+          Delivering good designs since 1954 🚚💨
+        </h4>
+        <p class="main__description">
+          We’re the first multi-purpose design kit solutions for businesses. We
+          help you bridge gaps between your layouts, templates and developers to
+          empower all involved.
+        </p>
+        <div class="main__feature-container">
+          <div class="feature">
+            <img
+              class="feature__icon"
+              src="../images/icons/sales-growth.svg"
+              alt="sales growth"
+            />
+            <h5 class="feature__title feature__title_size_s">Sales growth</h5>
+            <p class="feature__description feature__description_size_s">
+              Identify qualified customers with easy-to-use live chat messaging
+              and AI-based Sales Bot
+            </p>
+            <button class="feature__btn btn btn_ghost">Learn more</button>
+          </div>
+          <div class="feature">
+            <img
+              class="feature__icon"
+              src="../images/icons/swap-icon.svg"
+              alt="swap the icon"
+            />
+            <h5 class="feature__title feature__title_size_s">Swap the icon</h5>
+            <p class="feature__description feature__description_size_s">
+              You can toggle to any icon within Instances and customize outlined
+              stroke to more bolder or lighter
+            </p>
+            <button class="feature__btn btn btn_ghost">Learn more</button>
+          </div>
+          <div class="feature">
+            <img
+              class="feature__icon"
+              src="../images/icons/support.svg"
+              alt="support"
+            />
+            <h5 class="feature__title feature__title_size_s">Support</h5>
+            <p class="feature__description feature__description_size_s">
+              Delivering faster and more personalized support with shared
+              screens and cool design systems for Figma
+            </p>
+            <button class="feature__btn btn btn_ghost">Learn more</button>
+          </div>
+          <div class="feature">
+            <img
+              class="feature__icon"
+              src="../images/icons/detach.svg"
+              alt="Detach if need"
+            />
+            <h5 class="feature__title feature__title_size_s">Detach if need</h5>
+            <p class="feature__description feature__description_size_s">
+              Delivering faster and more personalized support with shared
+              screens and cool design systems for Figma
+            </p>
+            <button class="feature__btn btn btn_ghost">Learn more</button>
+          </div>
+        </div>
+      </div>
+      <div class="main__pricing">
+        <h2 class="main__title main__title_size_m">Affordable pricing</h2>
+        <h4 class="main__title main__title_size_s">
+          Bill me <span class="main__title-underline">monthly</span> • yearly
+        </h4>
+        <div class="main__plan-container">
+          <div class="plan">
+            <p class="plan__name plan__name_size_m">Like a pussy</p>
+            <p class="plan__pricing">
+              <span class="plan__price plan__price_size_s">Free</span>
+              <span class="plan__duration">/ forever</span>
+            </p>
+            <ul class="plan__advantages list">
+              <li class="plan__item plan__item_size_s">
+                Components-driven system
+              </li>
+              <li class="plan__item plan__item_size_s">
+                Sales-boosting landing pages
+              </li>
+              <li class="plan__item plan__item_size_s">
+                Awesome Feather icons pack
+              </li>
+            </ul>
+            <button class="plan__btn btn btn_ghost">Try for free</button>
+          </div>
+          <div class="plan">
+            <div class="plan__name-group">
+              <p class="plan__name plan__name_size_m">👤 Individual</p>
+              <button class="plan__name-btn btn btn_ghost">Best!</button>
+            </div>
+            <p class="plan__pricing">
+              <span class="plan__price plan__price_size_s">$24</span>
+              <span class="plan__duration">/ month</span>
+            </p>
+            <ul class="plan__advantages list">
+              <li class="plan__item plan__item_size_s">
+                Components-driven system
+              </li>
+              <li class="plan__item plan__item_size_s">
+                Sales-boosting landing pages
+              </li>
+              <li class="plan__item plan__item_size_s">
+                Awesome Feather icons pack
+              </li>
+              <li class="plan__item plan__item_size_s">
+                Themed into 3 different styles
+              </li>
+              <li class="plan__item plan__item_size_s">
+                Will help to learn Figma
+              </li>
+            </ul>
+            <button class="plan__btn btn btn_primary">Regular license</button>
+          </div>
+          <div class="plan">
+            <p class="plan__name plan__name_size_m">👥 Corporate</p>
+            <p class="plan__pricing">
+              <span class="plan__price plan__price_size_s">$12</span>
+              <span class="plan__duration">/ editor</span>
+            </p>
+            <ul class="plan__advantages list">
+              <li class="plan__item plan__item_size_s">
+                Components-driven system
+              </li>
+              <li class="plan__item plan__item_size_s">
+                Sales-boosting landing pages
+              </li>
+              <li class="plan__item plan__item_size_s">
+                Awesome Feather icons pack
+              </li>
+              <li class="plan__item plan__item_size_s">
+                Themed into 3 different styles
+              </li>
+            </ul>
+            <button class="plan__btn btn btn_ghost">Extended license</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer__social-media">
+        <h5 class="footer__title footer__title_size_s">Follow Us</h5>
+        <ul class="footer__icon-container list">
+          <li class="list__item">
+            <a
+              class="list__media-link"
+              style="
+                background: url(../images/icons/icon-facebook.svg) no-repeat;
+              "
+              href="https://www.facebook.com/"
+            ></a>
+          </li>
+          <li class="list__item">
+            <a
+              class="list__media-link"
+              style="
+                background: url(../images/icons/icon-linkedin.svg) no-repeat;
+              "
+              href="https://www.linkedin.com/"
+            ></a>
+          </li>
+          <li class="list__item">
+            <a
+              class="list__media-link"
+              style="background: url(../images/icons/icon-slack.svg) no-repeat"
+              href="https://slack.com/"
+            ></a>
+          </li>
+          <li class="list__item">
+            <a
+              class="list__media-link"
+              style="
+                background: url(../images/icons/icon-twitter.svg) no-repeat;
+              "
+              href="https://twitter.com/"
+            ></a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__email">
+        <h5 class="footer__title footer__title_size_s">Follow Us</h5>
+        <a
+          class="footer__email-link footer__email-link_size_s"
+          href="mailto:hello@fapsterapp.com"
+          >hello@fapsterapp.com</a
+        >
+      </div>
+      <div class="footer__info">
+        <h5 class="footer__title footer__title_size_s">Information</h5>
+        <div class="footer__link-container">
+          <a class="footer__link footer__link_size_s" href=""
+            >About Fapster app</a
+          >
+          <a class="footer__link footer__link_size_s" href="">Get in Touch</a>
+          <a class="footer__link footer__link_size_s" href="">Things We Like</a>
+          <a class="footer__link footer__link_size_s" href=""
+            >Onhovered / Active</a
+          >
+          <a class="footer__link footer__link_size_s" href="">Privacy Policy</a>
+          <a class="footer__link footer__link_size_s" href=""
+            >Terms of Service</a
+          >
+          <a class="footer__link footer__link_size_s" href="">We are hiring!</a>
+          <a class="footer__link footer__link_size_s" href="">Resources</a>
+        </div>
+      </div>
+      <div class="footer__form-container">
+        <h5 class="footer__title footer__title_size_s">Keep in touch</h5>
+        <form class="footer__form form">
+          <input
+            name="name"
+            class="form__input"
+            type="text"
+            placeholder="Your name"
+          />
+          <input
+            name="email"
+            class="form__input"
+            type="email"
+            placeholder="E-mail"
+          />
+          <textarea
+            name="message"
+            class="form__text-area"
+            placeholder="Leave your message"
+          ></textarea>
+          <button class="form__btn btn btn_primary">Send</button>
+        </form>
+      </div>
+    </footer>
+    <script src="../scripts/index.js"></script>
+  </body>
+</html>
