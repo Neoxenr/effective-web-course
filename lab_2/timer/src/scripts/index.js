@@ -170,7 +170,6 @@ for (let timeButton of timeButtons) {
   timeButton.addEventListener("click", addTime);
 }
 
-timerMinute.addEventListener("input", handleInput);
 timerSecond.addEventListener("input", handleInput);
 
 startButton.addEventListener("click", startTimer);
