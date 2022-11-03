@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Timer</title>
+  </head>
+  <body>
+    <div class="timer">
+      <div class="timer__btn-group">
+        <button class="timer__btn btn btn_time">1 minute</button>
+        <button class="timer__btn btn btn_time">5 minute</button>
+        <button class="timer__btn btn btn_time">10 minute</button>
+      </div>
+      <div class="timer__input-group">
+        <input
+          class="timer__minute input"
+          type="text"
+          maxlength="2"
+          pattern="\d*"
+        />
+        :
+        <input
+          class="timer__second input"
+          type="text"
+          maxlength="2"
+          pattern="\d*"
+        />
+      </div>
+      <div class="timer__btn-group">
+        <button class="timer__btn btn btn_start">Start</button>
+        <button class="timer__btn btn btn_stop">Stop</button>
+        <button class="timer__btn btn btn_reset">Reset</button>
+      </div>
+    </div>
+    <script type="module" src="../scripts/index.js"></script>
+  </body>
+</html>
