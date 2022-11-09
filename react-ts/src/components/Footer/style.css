@@ -1,0 +1,12 @@
+.footer {
+  width: 100%;
+  top: auto;
+  bottom: 0;
+  background-color: #000;
+}
+
+.footer__logo {
+  max-width: 250px;
+  max-height: 30px;
+  padding: 5px 0;
+}
