@@ -1,0 +1,31 @@
+{
+  "header": {
+    "navigation": {
+      "characters": "Персонажи",
+      "comics": "Комиксы",
+      "series": "Фильмы"
+    }
+  },
+  "main": {
+    "search": {
+      "placeholder": {
+        "part1": "Найти",
+        "part2": {
+          "characters": "персонажей",
+          "comics": "комиксы",
+          "series": "фильмы"
+        },
+        "part3": "по названию"
+      },
+      "button": "Поиск"
+    }
+  },
+  "footer": {
+    "info": "Данные защищены Marvel. © ",
+    "lang": {
+      "label": "Язык",
+      "en": "Английский",
+      "ru": "Русский"
+    }
+  }
+}

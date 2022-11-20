@@ -1,1 +1,2 @@
-export type { Card } from './card';
+export type { Card, CardDetail } from './card';
+export type { DetailLink } from './detail';

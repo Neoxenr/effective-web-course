@@ -1,0 +1,53 @@
+.card {
+  width: 300px;
+
+  .media {
+    height: 200px;
+  }
+
+  .description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  
+  .title {
+    @extend .description;
+    -webkit-line-clamp: 2;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .card {
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 200px;
+
+    .media {
+      height: 150px;
+    }
+  }
+}
+
+@media screen and (max-width: 485px) {
+  .card {
+    width: 150px;
+  }
+}
+
+
+@media screen and (max-width: 370px) {
+  .card {
+    width: 140px;
+
+    .media {
+      height: 100px;
+    }
+  }
+}

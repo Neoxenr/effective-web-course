@@ -1,7 +1,6 @@
+// React
 import React, { ReactElement } from 'react';
-
-// Types
-import { Card as CardType } from 'types';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 // MUI
 import {
@@ -12,23 +11,40 @@ import {
   Typography
 } from '@mui/material';
 
-// CSS
-import './style.css';
+// Types
+import { Card as CardType } from 'types';
 
-function Card({ title, description, imageUrl }: CardType): ReactElement {
+// SCSS
+import styles from './Card.module.scss';
+
+function Card({ id, title, description, imageUrl }: CardType): ReactElement {
+  const location = useLocation();
+
+  const navigate = useNavigate();
+
   return (
-    <CardMUI sx={{ maxWidth: 300 }}>
+    <CardMUI
+      className={styles.card}
+      onClick={() =>
+        navigate(
+          `${
+            location.pathname === '/' ? '/characters' : location.pathname
+          }/${id}`
+        )
+      }
+    >
       <CardActionArea>
-        <CardMedia component="img" height="200" image={imageUrl} alt={title} />
+        <CardMedia
+          component="img"
+          className={styles.media}
+          image={imageUrl}
+          alt={title}
+        />
         <CardContent>
-          <Typography variant="h5" component="div">
+          <Typography variant="h5" component="div" className={styles.title}>
             {title}
           </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            className="card__description"
-          >
+          <Typography variant="body2" className={styles.description}>
             {description}
           </Typography>
         </CardContent>

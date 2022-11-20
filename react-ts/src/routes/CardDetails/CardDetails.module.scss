@@ -1,0 +1,56 @@
+.cardDetails {
+  .image {
+    width: 100%;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+
+  .details {
+    justify-content: space-around;
+    margin-top: 2%;
+
+    .description {
+      .header {
+        font-weight: 900;
+        margin-bottom: 3%;
+      }
+    }
+
+    .title {
+      font-weight: 800;
+      margin-bottom: 3%;
+      text-transform: capitalize;
+    }
+  
+    .linkContainer {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+  
+      .link {
+        text-decoration: none;
+  
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .cardDetails {
+    .image {
+      height: 300px;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .cardDetails {
+    .image {
+      height: 200px;
+    }
+  }
+}

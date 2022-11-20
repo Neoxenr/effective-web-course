@@ -1,0 +1,31 @@
+{
+  "header": {
+    "navigation": {
+      "characters": "Characters",
+      "comics": "Comics",
+      "series": "Series"
+    }
+  },
+  "main": {
+    "search": {
+      "placeholder": {
+        "part1": "Search for",
+        "part2": {
+          "characters": "Characters",
+          "comics": "Comics",
+          "series": "Series"
+        },
+        "part3": "by Name"
+      },
+      "button": "Search"
+    }
+  },
+  "footer": {
+    "info": "Data provided by Marvel. © ",
+    "lang": {
+      "label": "Language",
+      "en": "English",
+      "ru": "Russian"
+    }
+  }
+}
