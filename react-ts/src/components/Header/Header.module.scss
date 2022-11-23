@@ -1,0 +1,46 @@
+.header {
+  position: relative;
+
+  .flexWrapper {
+    justify-content: space-between;
+
+    .logo {
+      max-width: 200px;
+      max-height: 30px;
+    }
+
+    .linkContainer {
+      column-gap: 20px;
+
+      .link {
+        text-decoration: none;
+
+        .text {
+          font-size: 1rem;
+        }
+
+        .currentLink {
+          color: #fff;
+        }
+
+        .otherLink {
+          color: #ffff00;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .header {
+    .flexWrapper {
+      .linkContainer {
+        .link {
+          .text {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}

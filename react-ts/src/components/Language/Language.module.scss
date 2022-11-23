@@ -1,0 +1,14 @@
+.formControl {
+  .language {
+    margin-right: 50px;
+    height: 50%;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .formControl {
+    .language {
+      margin-right: 0;
+    }
+  }
+}

@@ -1,37 +1,49 @@
+// React
 import React, { ReactElement } from 'react';
 
 // MUI
-import { Toolbar, Typography, Link } from '@mui/material';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Link,
+  StyledEngineProvider
+} from '@mui/material';
 
-// CSS
-import './style.css';
+// i18n
+import { useTranslation } from 'react-i18next';
+
+// Components
+import Language from '../Language/Language';
+
+// SCSS
+import styles from './Footer.module.scss';
 
 function Footer(): ReactElement {
+  const { t } = useTranslation();
+
   return (
-    <footer className="footer">
-      <Toolbar
-        sx={{
-          flexDirection: 'column',
-          alignItems: 'start',
-          padding: '10px 0'
-        }}
-      >
-        <img src="marvel_logo.svg" alt="logo" className="footer__logo" />
-        <Typography sx={{ fontSize: '14px', color: '#fff' }}>
-          Data provided by Marver. © {new Date().getFullYear()}
-        </Typography>
-        <Link
-          target="_blank"
-          rel="noreferrer"
-          href="https://developer.marvel.com"
-          sx={{ color: '#fff' }}
-        >
-          <Typography sx={{ fontSize: '14px' }}>
-            developer.marvel.com
+    <StyledEngineProvider injectFirst>
+      <AppBar component="footer" className={styles.footer}>
+        <Toolbar className={styles.flexWrapper}>
+          <img src="/marvel_logo.svg" alt="logo" className={styles.logo} />
+          <Typography className={styles.info}>
+            {`${t('footer.info')} ${new Date().getFullYear()}`}
           </Typography>
-        </Link>
-      </Toolbar>
-    </footer>
+          <Link
+            target="_blank"
+            rel="noreferrer"
+            href="https://developer.marvel.com"
+            className={styles.linkWrapper}
+          >
+            <Typography variant="subtitle2" className={styles.link}>
+              developer.marvel.com
+            </Typography>
+          </Link>
+        </Toolbar>
+        <Language />
+      </AppBar>
+    </StyledEngineProvider>
   );
 }
 
