@@ -1,6 +1,6 @@
 // React
 import React, { ReactElement } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 // MUI
 import {
@@ -14,19 +14,22 @@ import {
 // i18n
 import { useTranslation } from 'react-i18next';
 
+// Store
+import searchStore from 'stores/SearchStore';
+
 // SCSS
 import styles from './Header.module.scss';
 
 const pages = [
-  { path: '/', name: 'characters' },
+  { path: '/characters', name: 'characters' },
   { path: '/comics', name: 'comics' },
   { path: '/series', name: 'series' }
 ];
 
 function Header(): ReactElement {
-  const location = useLocation();
-
   const { t } = useTranslation();
+
+  const { setSearchedText } = searchStore;
 
   return (
     <StyledEngineProvider injectFirst>
@@ -36,18 +39,21 @@ function Header(): ReactElement {
             <img src="/marvel_logo.svg" alt="logo" className={styles.logo} />
             <Toolbar className={styles.linkContainer}>
               {pages.map((page) => (
-                <Link key={page.name} to={page.path} className={styles.link}>
-                  <Typography
-                    className={`${styles.text} ${
-                      location.pathname === page.path
-                        ? styles.currentLink
-                        : styles.otherLink
-                    }`}
-                    variant="subtitle1"
-                  >
-                    {t(`header.navigation.${page.name}`)}
-                  </Typography>
-                </Link>
+                <NavLink
+                  key={page.name}
+                  to={page.path}
+                  onClick={() => setSearchedText('')}
+                  className={styles.link}
+                >
+                  {({ isActive }) => (
+                    <Typography
+                      className={styles.text}
+                      variant={isActive ? 'subtitle2' : 'subtitle1'}
+                    >
+                      {t(`header.navigation.${page.name}`)}
+                    </Typography>
+                  )}
+                </NavLink>
               ))}
             </Toolbar>
           </Toolbar>
