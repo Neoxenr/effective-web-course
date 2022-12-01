@@ -1,6 +1,6 @@
 type BaseLink = {
   name?: string;
-  resourceURI?: string;
+  resourceURI: string;
 };
 
 type BaseItems = {

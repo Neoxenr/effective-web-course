@@ -1,22 +1,18 @@
 // React
 import React, { ReactElement } from 'react';
+import { Link } from 'react-router-dom';
 
 // MUI
 import {
   Grid,
   StyledEngineProvider,
   Typography,
-  Box,
-  Link
+  Box
+  // Link
 } from '@mui/material';
 
 // i18n
 import { useTranslation } from 'react-i18next';
-
-import MD5 from 'crypto-js/md5';
-
-// Config
-import envs from 'config/environments';
 
 // Types
 import { Base } from 'types';
@@ -27,8 +23,6 @@ import styles from './CardDetails.module.scss';
 interface CardDetailsProps {
   data?: Base;
 }
-
-const ts = new Date().getTime();
 
 function CardDetails({ data }: CardDetailsProps): ReactElement {
   const { t } = useTranslation();
@@ -61,11 +55,7 @@ function CardDetails({ data }: CardDetailsProps): ReactElement {
                 {data.characters.items?.map((item) => (
                   <Link
                     key={item.resourceURI}
-                    href={`${item.resourceURI}?ts=${ts}&apikey=${
-                      envs.apiKey
-                    }&hash=${MD5(ts + envs.privateKey + envs.apiKey)}`}
-                    rel="noreferrer"
-                    target="_blank"
+                    to={`/characters/${item.resourceURI.split('/').at(-1)}`}
                     className={styles.link}
                   >
                     <Typography className={styles.text}>{item.name}</Typography>
@@ -83,11 +73,7 @@ function CardDetails({ data }: CardDetailsProps): ReactElement {
                 {data.comics.items?.map((item) => (
                   <Link
                     key={item.resourceURI}
-                    href={`${item.resourceURI}?ts=${ts}&apikey=${
-                      envs.apiKey
-                    }&hash=${MD5(ts + envs.privateKey + envs.apiKey)}`}
-                    rel="noreferrer"
-                    target="_blank"
+                    to={`/comics/${item.resourceURI.split('/').at(-1)}`}
                     className={styles.link}
                   >
                     <Typography className={styles.text}>{item.name}</Typography>
@@ -108,11 +94,7 @@ function CardDetails({ data }: CardDetailsProps): ReactElement {
                 )?.map((item) => (
                   <Link
                     key={item.resourceURI}
-                    href={`${item.resourceURI}?ts=${ts}&apikey=${
-                      envs.apiKey
-                    }&hash=${MD5(ts + envs.privateKey + envs.apiKey)}`}
-                    rel="noreferrer"
-                    target="_blank"
+                    to={`/series/${item.resourceURI.split('/').at(-1)}`}
                     className={styles.link}
                   >
                     <Typography className={styles.text}>{item.name}</Typography>
