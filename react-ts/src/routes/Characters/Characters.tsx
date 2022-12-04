@@ -1,8 +1,17 @@
 // React
 import React, { ReactElement, useEffect } from 'react';
 
+// i18n
+import { useTranslation } from 'react-i18next';
+
 // MUI
-import { Alert, AlertTitle, CircularProgress, Pagination } from '@mui/material';
+import {
+  Alert,
+  AlertTitle,
+  CircularProgress,
+  Pagination,
+  Typography
+} from '@mui/material';
 
 // MobX
 import { observer } from 'mobx-react-lite';
@@ -22,6 +31,8 @@ function Characters(): ReactElement {
   const { charactersTotal, characters, getCharactersList } = charactersStore;
 
   const { searchedText } = searchStore;
+
+  const { t } = useTranslation();
 
   const [page, setPage] = React.useState(1);
 
@@ -56,7 +67,7 @@ function Characters(): ReactElement {
             className={styles.pagination}
           />
         ) : (
-          <></>
+          <Typography>{t('main.content.cards.characters')}</Typography>
         )
       }
     />

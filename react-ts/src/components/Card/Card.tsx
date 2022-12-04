@@ -33,7 +33,7 @@ function Card({ id, name, description, imageUrl }: CardProps): ReactElement {
         navigate(`${location.pathname}/${id}`);
       }}
     >
-      <CardActionArea>
+      <CardActionArea className={styles.area}>
         <CardMedia
           component="img"
           className={styles.media}

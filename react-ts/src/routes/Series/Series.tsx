@@ -1,6 +1,9 @@
 // React
 import React, { ReactElement, useEffect } from 'react';
 
+// i18n
+import { useTranslation } from 'react-i18next';
+
 // MobX
 import { observer } from 'mobx-react-lite';
 
@@ -9,7 +12,13 @@ import seriesStore from 'stores/SeriesStore';
 import searchStore from 'stores/SearchStore';
 
 // MUI
-import { Alert, AlertTitle, CircularProgress, Pagination } from '@mui/material';
+import {
+  Alert,
+  AlertTitle,
+  CircularProgress,
+  Pagination,
+  Typography
+} from '@mui/material';
 
 // Components
 import { Cards, Search } from 'components';
@@ -22,6 +31,8 @@ function Series(): ReactElement {
   const { seriesTotal, series, getSeriesList } = seriesStore;
 
   const { searchedText } = searchStore;
+
+  const { t } = useTranslation();
 
   const [page, setPage] = React.useState(1);
 
@@ -56,7 +67,7 @@ function Series(): ReactElement {
             className={styles.pagination}
           />
         ) : (
-          <></>
+          <Typography>{t('main.content.cards.series')}</Typography>
         )
       }
     />

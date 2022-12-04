@@ -47,7 +47,7 @@ const Cards: FC<CardsProps> = ({ data, search, pagination }) => {
             <Grid key={item?.id} item className={styles.item}>
               <Card
                 id={item?.id}
-                name={item?.name !== undefined ? item.name : item?.title}
+                name={item?.name ? item.name : item?.title}
                 description={item?.description}
                 imageUrl={`${item?.thumbnail?.path}/landscape_xlarge.${item?.thumbnail?.extension}`}
               />
