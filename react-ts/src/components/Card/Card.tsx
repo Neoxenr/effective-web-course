@@ -11,13 +11,17 @@ import {
   Typography
 } from '@mui/material';
 
-// Types
-import { Card as CardType } from 'types';
-
 // SCSS
 import styles from './Card.module.scss';
 
-function Card({ id, title, description, imageUrl }: CardType): ReactElement {
+interface CardProps {
+  id?: string;
+  name?: string;
+  description?: string;
+  imageUrl?: string;
+}
+
+function Card({ id, name, description, imageUrl }: CardProps): ReactElement {
   const location = useLocation();
 
   const navigate = useNavigate();
@@ -25,24 +29,20 @@ function Card({ id, title, description, imageUrl }: CardType): ReactElement {
   return (
     <CardMUI
       className={styles.card}
-      onClick={() =>
-        navigate(
-          `${
-            location.pathname === '/' ? '/characters' : location.pathname
-          }/${id}`
-        )
-      }
+      onClick={() => {
+        navigate(`${location.pathname}/${id}`);
+      }}
     >
-      <CardActionArea>
+      <CardActionArea className={styles.area}>
         <CardMedia
           component="img"
           className={styles.media}
           image={imageUrl}
-          alt={title}
+          alt={name}
         />
         <CardContent>
           <Typography variant="h5" component="div" className={styles.title}>
-            {title}
+            {name}
           </Typography>
           <Typography variant="body2" className={styles.description}>
             {description}

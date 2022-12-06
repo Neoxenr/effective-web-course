@@ -11,9 +11,6 @@ import { lightTheme } from 'themes/index';
 // Routes
 import routes from './routes';
 
-// SCSS
-import './index.module.scss';
-
 function App(): ReactElement {
   const element = useRoutes(routes);
 

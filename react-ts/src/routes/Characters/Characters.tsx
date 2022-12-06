@@ -1,41 +1,77 @@
 // React
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 
-// Types
-import { Card } from 'types';
+// i18n
+import { useTranslation } from 'react-i18next';
+
+// MUI
+import {
+  Alert,
+  AlertTitle,
+  CircularProgress,
+  Pagination,
+  Typography
+} from '@mui/material';
+
+// MobX
+import { observer } from 'mobx-react-lite';
+
+// Store
+import charactersStore from 'stores/CharactersStore';
+import searchStore from 'stores/SearchStore';
 
 // Components
-import { MainLayout } from 'components';
+import { Cards, Search } from 'components';
 
-const data: Card[] = [
-  {
-    id: '6000dec4-68a9-11ed-9022-0242ac120002',
-    title: 'Agent Mobius',
-    description:
-      'Mobius is an agent for the Time Variance Authority who specializes in the investigations of particularly dangerous time criminals.',
-    imageUrl:
-      'https://terrigen-cdn-dev.marvel.com/content/prod/1x/1078mob_ons_crd_01.jpg'
-  },
-  {
-    id: '71b39094-68a9-11ed-9022-0242ac120002',
-    title: 'Ant-Man',
-    description:
-      'Ex-con Scott Lang finds a new lease on life, and a chance to redeem himself in the eyes of his daughter, after taking over the mantle of Ant-Man.',
-    imageUrl:
-      'https://terrigen-cdn-dev.marvel.com/content/prod/1x/010ant_ons_crd_04.jpg'
-  },
-  {
-    id: '763ac74a-68a9-11ed-9022-0242ac120002',
-    title: 'Moon Knight',
-    description:
-      'A mild-mannered gift-shop employee, becomes plagued with blackouts and memories of another life.',
-    imageUrl:
-      'https://terrigen-cdn-dev.marvel.com/content/prod/1x/343mkn_com_crd_01.jpg'
-  }
-];
+// SCSS
+import styles from '../../utility.module.scss';
 
 function Characters(): ReactElement {
-  return <MainLayout title="Characters" data={data} />;
+  const { loading, error } = charactersStore;
+  const { charactersTotal, characters, getCharactersList } = charactersStore;
+
+  const { searchedText } = searchStore;
+
+  const { t } = useTranslation();
+
+  const [page, setPage] = React.useState(1);
+
+  useEffect(() => {
+    getCharactersList((page - 1) * 20, searchedText);
+  }, [page]);
+
+  if (error) {
+    return (
+      <Alert severity="error">
+        <AlertTitle>Error</AlertTitle>
+        {error}
+      </Alert>
+    );
+  }
+
+  if (loading) {
+    return <CircularProgress size={60} className={styles.spinner} />;
+  }
+
+  return (
+    <Cards
+      data={characters}
+      search={<Search getList={getCharactersList} />}
+      pagination={
+        charactersTotal ? (
+          <Pagination
+            count={Math.ceil(charactersTotal / 20)}
+            siblingCount={0}
+            page={page}
+            onChange={(_, value) => setPage(value)}
+            className={styles.pagination}
+          />
+        ) : (
+          <Typography>{t('main.content.cards.characters')}</Typography>
+        )
+      }
+    />
+  );
 }
 
-export default Characters;
+export default observer(Characters);

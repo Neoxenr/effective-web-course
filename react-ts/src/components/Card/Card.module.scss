@@ -1,5 +1,14 @@
 .card {
-  width: 300px;
+  width: 270px;
+  height: 100%;
+
+  .area {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+  }
 
   .media {
     height: 200px;
@@ -15,7 +24,7 @@
   
   .title {
     @extend .description;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
   }
 }
 

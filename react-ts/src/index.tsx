@@ -9,6 +9,9 @@ import './localization/index';
 // Components
 import App from './App';
 
+// SCSS
+import './index.module.scss';
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>

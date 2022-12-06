@@ -1,41 +1,77 @@
 // React
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 
-// Types
-import { Card } from 'types';
+// i18n
+import { useTranslation } from 'react-i18next';
+
+// MobX
+import { observer } from 'mobx-react-lite';
+
+// Store
+import comicsStore from 'stores/ComicsStore';
+import searchStore from 'stores/SearchStore';
+
+// MUI
+import {
+  Alert,
+  AlertTitle,
+  CircularProgress,
+  Pagination,
+  Typography
+} from '@mui/material';
 
 // Components
-import { MainLayout } from 'components';
+import { Cards, Search } from 'components';
 
-const data: Card[] = [
-  {
-    id: '99c36bae-68a9-11ed-9022-0242ac120002',
-    title: 'Spider-Man: The Lost Hunt (2022) #1',
-    description:
-      'The origins of Kraven finally revealed! J.M. Dematteis continues to spin new webs within the past, this time partnered with artist Eder Messias! Revealing secrets and answering mysteries Spidey fans have been waiting for — prepare to explore the depths of what made Kraven the Hunter the powerhouse villain he was! As Peter Parker and Mary Jane prepare for their new lives in Portland, a man from Kraven’s past stalks them. Who is this mystery man, and what does he want with Spider-Man? Find out when we return to the time period after Spider-Man: The Final Adventure when Peter Parker was powerless!',
-    imageUrl:
-      'https://i.annihil.us/u/prod/marvel/i/mg/4/03/63658b25120f5/portrait_uncanny.jpg'
-  },
-  {
-    id: 'a1aebb84-68a9-11ed-9022-0242ac120002',
-    title: 'Ghost Rider (2022) #8',
-    description:
-      'Johnny Blaze and Talia Warroad — working together?! As part of a splinter unit within the F.B.I., they will map out the shadow highways that crisscross the country, uncovering the larger design of an underworld conspiracy!',
-    imageUrl:
-      'https://i.annihil.us/u/prod/marvel/i/mg/7/20/63658b3f64f9a/portrait_uncanny.jpg'
-  },
-  {
-    id: 'a478c300-68a9-11ed-9022-0242ac120002',
-    title: 'Star Wars: The High Republic (2022) #2',
-    description:
-      'Death Strikes On Jedha! A Jedi lies dead in an ancient shrine, another on the trail of the murderer. Who is using ancient Force powers on the streets of the holy city, and why are sacred relics going missing? And why do all roads lead to the Temple of the Whills?',
-    imageUrl:
-      'https://i.annihil.us/u/prod/marvel/i/mg/a/03/63658b24d9062/portrait_uncanny.jpg'
-  }
-];
+// SCSS
+import styles from '../../utility.module.scss';
 
 function Comics(): ReactElement {
-  return <MainLayout title="Comics" data={data} />;
+  const { loading, error } = comicsStore;
+  const { comicsTotal, comics, getComicsList } = comicsStore;
+
+  const { searchedText } = searchStore;
+
+  const { t } = useTranslation();
+
+  const [page, setPage] = React.useState(1);
+
+  useEffect(() => {
+    getComicsList((page - 1) * 20, searchedText);
+  }, [page]);
+
+  if (error) {
+    return (
+      <Alert severity="error">
+        <AlertTitle>Error</AlertTitle>
+        {error}
+      </Alert>
+    );
+  }
+
+  if (loading) {
+    return <CircularProgress size={60} className={styles.spinner} />;
+  }
+
+  return (
+    <Cards
+      data={comics}
+      search={<Search getList={getComicsList} />}
+      pagination={
+        comicsTotal ? (
+          <Pagination
+            count={Math.ceil(comicsTotal / 20)}
+            siblingCount={0}
+            page={page}
+            onChange={(_, value) => setPage(value)}
+            className={styles.pagination}
+          />
+        ) : (
+          <Typography>{t('main.content.cards.comics')}</Typography>
+        )
+      }
+    />
+  );
 }
 
-export default Comics;
+export default observer(Comics);

@@ -18,6 +18,19 @@
         "part3": "by Name"
       },
       "button": "Search"
+    },
+    "content": {
+      "cardDetails": {
+        "description": "Description did not found",
+        "comics": "Comics did not found",
+        "series": "Series did not found",
+        "characters": "Characters did not found"
+      },
+      "cards": {
+        "characters": "Characters did not found",
+        "comics": "Comics did not found",
+        "series": "Series did not found"
+      }
     }
   },
   "footer": {

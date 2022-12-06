@@ -18,3 +18,19 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .main {
+    .title {
+      font-size: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .main {
+    .title {
+      font-size: 24px;
+    }
+  }
+}
