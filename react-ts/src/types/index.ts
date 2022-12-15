@@ -10,3 +10,4 @@ export type {
   GetAllSeriesResponseDto,
   GetSerialResponseDto
 } from './dto';
+export type { Card } from './card';

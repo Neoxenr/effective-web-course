@@ -14,25 +14,52 @@
 
       .link {
         text-decoration: none;
-
-        .text {
-          font-size: 1rem;
-        }
       }
+    }
+  }
+
+  .text {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .header {
+    .flexWrapper {
+      .linkContainer {
+        padding: 0 10px;
+        column-gap: 10px;
+      }
+    }
+
+    .text {
+      font-size: 14px;
     }
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 470px) {
+  .header {
+    .flexWrapper {
+      padding: 0 10px;
+    }
+
+    .text {
+      font-size: 12px;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
   .header {
     .flexWrapper {
       .linkContainer {
-        .link {
-          .text {
-            font-size: 13px;
-          }
-        }
+        column-gap: 5px;
       }
+    }
+
+    .text {
+      font-size: 11px;
     }
   }
 }

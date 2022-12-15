@@ -2,19 +2,26 @@
   display: flex;
   flex-direction: column;
   margin: 7% 5%;
+  padding-bottom: 103px;
 
   .title {
     font-weight: 600;
   }
 
   .cardContainer {
-    width: 100%;
-    justify-content: flex-start;
-    gap: 20px;
     margin: 0;
+    width: 100%;
+    gap: 20px;
+    margin: 40px auto 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
 
-    .item {
-      padding: 0;
+@media screen and (max-width: 700px) {
+  .main {
+    .cardContainer {
+      margin-bottom: 10%;
     }
   }
 }
@@ -23,6 +30,16 @@
   .main {
     .title {
       font-size: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .main {
+    padding-bottom: 200px;
+
+    .cardContainer {
+      margin-top: 30px;
     }
   }
 }

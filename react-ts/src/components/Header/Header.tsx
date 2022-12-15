@@ -21,6 +21,7 @@ import searchStore from 'stores/SearchStore';
 import styles from './Header.module.scss';
 
 const pages = [
+  { path: '/favorites', name: 'favorites' },
   { path: '/characters', name: 'characters' },
   { path: '/comics', name: 'comics' },
   { path: '/series', name: 'series' }
@@ -28,8 +29,6 @@ const pages = [
 
 function Header(): ReactElement {
   const { t } = useTranslation();
-
-  const { setSearchedText } = searchStore;
 
   return (
     <StyledEngineProvider injectFirst>
@@ -42,7 +41,7 @@ function Header(): ReactElement {
                 <NavLink
                   key={page.name}
                   to={page.path}
-                  onClick={() => setSearchedText('')}
+                  onClick={() => searchStore.setSearchedText('')}
                   className={styles.link}
                 >
                   {({ isActive }) => (

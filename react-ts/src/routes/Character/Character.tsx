@@ -5,43 +5,28 @@ import { useParams } from 'react-router-dom';
 // MobX
 import { observer } from 'mobx-react-lite';
 
-// MUI
-import { Alert, AlertTitle, CircularProgress } from '@mui/material';
-
 // Store
 import charactersStore from 'stores/CharactersStore';
 
 // Components
-import CardDetails from 'components/CardDetails/CardDetails';
-
-// SCSS
-import styles from '../../utility.module.scss';
+import { CardDetails, Alert } from 'components';
 
 function Character(): ReactElement {
   const { id } = useParams();
 
-  const { loading, error, character, getCharacter } = charactersStore;
+  const { loading, error, character } = charactersStore;
 
   useEffect(() => {
     if (id) {
-      getCharacter(id);
+      charactersStore.getCharacter(id);
     }
   }, [id]);
 
   if (error) {
-    return (
-      <Alert severity="error">
-        <AlertTitle>Error</AlertTitle>
-        {error}
-      </Alert>
-    );
+    return <Alert type="error" title="Error" message={error} />;
   }
 
-  if (loading || !character.id) {
-    return <CircularProgress size={60} className={styles.spinner} />;
-  }
-
-  return <CardDetails data={character} />;
+  return <CardDetails loading={loading || !character.id} data={character} />;
 }
 
 export default observer(Character);

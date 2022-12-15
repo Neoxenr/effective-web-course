@@ -1,6 +1,7 @@
 {
   "header": {
     "navigation": {
+      "favorites": "Избранное",
       "characters": "Персонажи",
       "comics": "Комиксы",
       "series": "Фильмы"
@@ -27,6 +28,7 @@
         "characters": "Персонажи не найдены"
       },
       "cards": {
+        "favorites": "Избранное не найдено",
         "characters": "Персонажи не найдены",
         "comics": "Комиксы не найдены",
         "series": "Фильмы не найдены"

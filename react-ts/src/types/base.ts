@@ -1,4 +1,4 @@
-type BaseLink = {
+export type BaseLink = {
   name?: string;
   resourceURI: string;
 };

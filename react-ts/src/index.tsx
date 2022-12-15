@@ -10,7 +10,7 @@ import './localization/index';
 import App from './App';
 
 // SCSS
-import './index.module.scss';
+import './styles/index.scss';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
