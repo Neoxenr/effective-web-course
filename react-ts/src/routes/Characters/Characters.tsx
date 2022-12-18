@@ -1,17 +1,8 @@
 // React
 import React, { ReactElement, useEffect } from 'react';
 
-// i18n
-import { useTranslation } from 'react-i18next';
-
 // MUI
-import {
-  Alert,
-  AlertTitle,
-  CircularProgress,
-  Pagination,
-  Typography
-} from '@mui/material';
+import { Pagination } from '@mui/material';
 
 // MobX
 import { observer } from 'mobx-react-lite';
@@ -21,54 +12,38 @@ import charactersStore from 'stores/CharactersStore';
 import searchStore from 'stores/SearchStore';
 
 // Components
-import { Cards, Search } from 'components';
-
-// SCSS
-import styles from '../../utility.module.scss';
+import { Cards, Search, Alert } from 'components';
 
 function Characters(): ReactElement {
   const { loading, error } = charactersStore;
-  const { charactersTotal, characters, getCharactersList } = charactersStore;
+  const { charactersTotal, characters } = charactersStore;
 
   const { searchedText } = searchStore;
-
-  const { t } = useTranslation();
 
   const [page, setPage] = React.useState(1);
 
   useEffect(() => {
-    getCharactersList((page - 1) * 20, searchedText);
+    charactersStore.getCharactersList((page - 1) * 20, searchedText);
   }, [page]);
 
   if (error) {
-    return (
-      <Alert severity="error">
-        <AlertTitle>Error</AlertTitle>
-        {error}
-      </Alert>
-    );
-  }
-
-  if (loading) {
-    return <CircularProgress size={60} className={styles.spinner} />;
+    return <Alert type="error" title="Error" message={error} />;
   }
 
   return (
     <Cards
+      type="characters"
+      loading={loading}
       data={characters}
-      search={<Search getList={getCharactersList} />}
+      search={<Search getList={charactersStore.getCharactersList} />}
       pagination={
-        charactersTotal ? (
-          <Pagination
-            count={Math.ceil(charactersTotal / 20)}
-            siblingCount={0}
-            page={page}
-            onChange={(_, value) => setPage(value)}
-            className={styles.pagination}
-          />
-        ) : (
-          <Typography>{t('main.content.cards.characters')}</Typography>
-        )
+        <Pagination
+          count={Math.ceil(charactersTotal / 20)}
+          siblingCount={0}
+          page={page}
+          onChange={(_, value) => setPage(value)}
+          className="pagination"
+        />
       }
     />
   );

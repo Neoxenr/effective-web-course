@@ -5,43 +5,28 @@ import { useParams } from 'react-router-dom';
 // MobX
 import { observer } from 'mobx-react-lite';
 
-// MUI
-import { Alert, AlertTitle, CircularProgress } from '@mui/material';
-
 // Store
 import comicsStore from 'stores/ComicsStore';
 
 // Components
-import CardDetails from 'components/CardDetails/CardDetails';
-
-// SCSS
-import styles from '../../utility.module.scss';
+import { CardDetails, Alert } from 'components';
 
 function Comic(): ReactElement {
   const { id } = useParams();
 
-  const { loading, error, comic, getComic } = comicsStore;
+  const { loading, error, comic } = comicsStore;
 
   useEffect(() => {
     if (id) {
-      getComic(id);
+      comicsStore.getComic(id);
     }
   }, [id]);
 
   if (error) {
-    return (
-      <Alert severity="error">
-        <AlertTitle>Error</AlertTitle>
-        {error}
-      </Alert>
-    );
+    return <Alert type="error" title="Error" message={error} />;
   }
 
-  if (loading || !comic.id) {
-    return <CircularProgress size={60} className={styles.spinner} />;
-  }
-
-  return <CardDetails data={comic} />;
+  return <CardDetails loading={loading || !comic.id} data={comic} />;
 }
 
 export default observer(Comic);

@@ -1,6 +1,7 @@
 {
   "header": {
     "navigation": {
+      "favorites": "Favorites",
       "characters": "Characters",
       "comics": "Comics",
       "series": "Series"
@@ -27,6 +28,7 @@
         "characters": "Characters did not found"
       },
       "cards": {
+        "favorites": "Favorites did not found",
         "characters": "Characters did not found",
         "comics": "Comics did not found",
         "series": "Series did not found"

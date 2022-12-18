@@ -1,7 +1,12 @@
 .cardDetails {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 103px;
+
   .wrapper {
     display: flex;
-    margin: 5% 12.5%;
+    margin: 90px 12.5%;
     column-gap: 5%;
     
     .header {
@@ -12,7 +17,7 @@
 
   .details {
     justify-content: space-around;
-    margin: 2% 0 10%;
+    margin: 0 0 90px;
 
     .title {
       font-weight: 800;
@@ -55,6 +60,14 @@
 @media screen and (max-width: 500px) {
   .cardDetails {
     .wrapper {
+      margin: 70px 12.5%;
+    }
+
+    .details {
+      margin: 0 0 70px;
+    }
+
+    .wrapper {
       column-gap: 10%;
   
       .image {
@@ -65,5 +78,11 @@
     .text {
       font-size: 14px;
     }
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .cardDetails {
+    padding-bottom: 200px;
   }
 }

@@ -5,43 +5,28 @@ import { useParams } from 'react-router-dom';
 // MobX
 import { observer } from 'mobx-react-lite';
 
-// MUI
-import { Alert, AlertTitle, CircularProgress } from '@mui/material';
-
 // Store
 import seriesStore from 'stores/SeriesStore';
 
 // Components
-import CardDetails from 'components/CardDetails/CardDetails';
-
-// SCSS
-import styles from '../../utility.module.scss';
+import { CardDetails, Alert } from 'components';
 
 function Serial(): ReactElement {
   const { id } = useParams();
 
-  const { loading, error, serial, getSerial } = seriesStore;
+  const { loading, error, serial } = seriesStore;
 
   useEffect(() => {
     if (id) {
-      getSerial(id);
+      seriesStore.getSerial(id);
     }
   }, [id]);
 
   if (error) {
-    return (
-      <Alert severity="error">
-        <AlertTitle>Error</AlertTitle>
-        {error}
-      </Alert>
-    );
+    return <Alert type="error" title="Error" message={error} />;
   }
 
-  if (loading || !serial.id) {
-    return <CircularProgress size={60} className={styles.spinner} />;
-  }
-
-  return <CardDetails data={serial} />;
+  return <CardDetails loading={loading || !serial.id} data={serial} />;
 }
 
 export default observer(Serial);

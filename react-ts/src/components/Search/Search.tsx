@@ -29,7 +29,7 @@ function Search({ getList }: SearchProps): ReactElement {
   const { t } = useTranslation();
 
   const [text, setText] = useState<string>('');
-  const { searchedText, setSearchedText } = searchStore;
+  const { searchedText } = searchStore;
 
   useEffect(() => {
     setText(searchedText);
@@ -54,7 +54,7 @@ function Search({ getList }: SearchProps): ReactElement {
         <Button
           variant="contained"
           onClick={() => {
-            setSearchedText(text);
+            searchStore.setSearchedText(text);
             getList?.(0, text);
           }}
           className={styles.btn}

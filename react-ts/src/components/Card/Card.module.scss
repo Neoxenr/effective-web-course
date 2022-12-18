@@ -1,5 +1,4 @@
 .card {
-  width: 270px;
   height: 100%;
 
   .area {
@@ -8,10 +7,12 @@
     justify-content: flex-start;
     align-items: flex-start;
     height: 100%;
-  }
 
-  .media {
-    height: 200px;
+    .icon {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
   }
 
   .description {
@@ -28,35 +29,9 @@
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 500px) {
   .card {
-    width: 250px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .card {
-    width: 200px;
-
-    .media {
-      height: 150px;
-    }
-  }
-}
-
-@media screen and (max-width: 485px) {
-  .card {
-    width: 150px;
-  }
-}
-
-
-@media screen and (max-width: 370px) {
-  .card {
-    width: 140px;
-
-    .media {
-      height: 100px;
-    }
+    width: 100%;
+    max-width: none;
   }
 }
