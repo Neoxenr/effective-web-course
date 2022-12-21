@@ -1,10 +1,12 @@
 // MobX
 import { observable, action, makeObservable } from 'mobx';
+
+// Types
 import { Card } from 'types';
 
 class FavoritesStore {
   @observable
-  favorites: Card[] = JSON.parse(localStorage.getItem('favorites') || '[]');
+  favorites: Card[] = JSON.parse(localStorage.getItem('favorites') ?? '[]');
 
   constructor() {
     makeObservable(this);

@@ -1,5 +1,6 @@
 // React
 import React, { ReactElement, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // MUI
 import { Pagination } from '@mui/material';
@@ -9,21 +10,24 @@ import { observer } from 'mobx-react-lite';
 
 // Store
 import charactersStore from 'stores/CharactersStore';
-import searchStore from 'stores/SearchStore';
 
 // Components
 import { Cards, Search, Alert } from 'components';
 
 function Characters(): ReactElement {
+  const location = useLocation();
+
+  const navigate = useNavigate();
+
+  const params = new URLSearchParams(location.search);
+
+  const page = +(params.get('page') ?? 1);
+
   const { loading, error } = charactersStore;
   const { charactersTotal, characters } = charactersStore;
 
-  const { searchedText } = searchStore;
-
-  const [page, setPage] = React.useState(1);
-
   useEffect(() => {
-    charactersStore.getCharactersList((page - 1) * 20, searchedText);
+    charactersStore.getCharactersList((page - 1) * 20, params.get('search'));
   }, [page]);
 
   if (error) {
@@ -35,13 +39,24 @@ function Characters(): ReactElement {
       type="characters"
       loading={loading}
       data={characters}
-      search={<Search getList={charactersStore.getCharactersList} />}
+      search={
+        <Search
+          disabled={loading}
+          getDataList={charactersStore.getCharactersList}
+        />
+      }
       pagination={
         <Pagination
           count={Math.ceil(charactersTotal / 20)}
           siblingCount={0}
           page={page}
-          onChange={(_, value) => setPage(value)}
+          onChange={(_, value) => {
+            const query = new URLSearchParams(location.search);
+
+            query.set('page', value.toString());
+
+            navigate(`/characters?${query}`);
+          }}
           className="pagination"
         />
       }

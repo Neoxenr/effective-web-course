@@ -30,7 +30,7 @@ class CharactersStore {
   @action
   getCharactersList = async (
     offset: number = 0,
-    nameStartsWith?: string
+    nameStartsWith?: string | null
   ): Promise<void> => {
     try {
       this.loading = true;
@@ -54,11 +54,11 @@ class CharactersStore {
       runInAction(() => {
         this.characters = characters;
       });
-    } catch (error: any) {
+    } catch (error) {
       console.error(error);
 
       runInAction(() => {
-        this.error = error.message;
+        this.error = (error as Error).message;
       });
     } finally {
       runInAction(() => {
@@ -80,11 +80,11 @@ class CharactersStore {
       runInAction(() => {
         this.character = character;
       });
-    } catch (error: any) {
+    } catch (error) {
       console.error(error);
 
       runInAction(() => {
-        this.error = error.message;
+        this.error = (error as Error).message;
       });
     } finally {
       runInAction(() => {

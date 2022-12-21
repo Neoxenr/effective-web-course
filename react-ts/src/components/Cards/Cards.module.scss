@@ -7,9 +7,8 @@
   .title {
     font-weight: 600;
   }
-
+  
   .cardContainer {
-    margin: 0;
     width: 100%;
     gap: 20px;
     margin: 40px auto 5%;
@@ -34,7 +33,7 @@
   }
 }
 
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 545px) {
   .main {
     padding-bottom: 200px;
 

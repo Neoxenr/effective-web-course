@@ -9,3 +9,4 @@ export { default as CardDetails } from './CardDetails/CardDetails';
 export { default as Search } from './Search/Search';
 export { default as Language } from './Language/Language';
 export { default as Alert } from './Alert/Alert';
+export { default as ThemeSwitcher } from './ThemeSwitcher/ThemeSwitcher';

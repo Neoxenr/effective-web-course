@@ -38,44 +38,37 @@ const Cards: FC<CardsProps> = ({ loading, type, data, search, pagination }) => {
   return (
     <StyledEngineProvider injectFirst>
       <Box component="main" className={styles.main}>
-        {loading ? (
-          <CircularProgress size={60} className="spinner" />
+        <Typography variant="h4" className={styles.title}>
+          {`${t(
+            `header.navigation.${location.pathname.substring(1).toLowerCase()}`
+          )} (${data?.length})`}
+        </Typography>
+        {search}
+        {loading && <CircularProgress size={60} className="spinner" />}
+        {data?.length ? (
+          <Box component="div" hidden={loading}>
+            <Box component="div" className={styles.cardContainer}>
+              {data?.map((item) => (
+                <Card
+                  key={item?.id}
+                  id={item?.id}
+                  type={type ?? item?.type}
+                  name={item?.name ? item.name : item?.title}
+                  description={item?.description}
+                  thumbnail={item?.thumbnail}
+                />
+              ))}
+            </Box>
+            {pagination}
+          </Box>
         ) : (
-          <>
-            <Typography variant="h4" className={styles.title}>
-              {`${t(
-                `header.navigation.${location.pathname
-                  .substring(1)
-                  .toLowerCase()}`
-              )} (${data?.length})`}
-            </Typography>
-            {search}
-            {data?.length ? (
-              <>
-                <Box component="div" className={styles.cardContainer}>
-                  {data?.map((item) => (
-                    <Card
-                      key={item?.id}
-                      id={item?.id}
-                      type={type ?? item?.type}
-                      name={item?.name ? item.name : item?.title}
-                      description={item?.description}
-                      thumbnail={item?.thumbnail}
-                    />
-                  ))}
-                </Box>
-                {pagination}
-              </>
-            ) : (
-              <Typography className="not-found">
-                {t(
-                  `main.content.cards.${location.pathname
-                    .substring(1)
-                    .toLowerCase()}`
-                )}
-              </Typography>
+          <Typography hidden={loading} className="not-found">
+            {t(
+              `main.content.cards.${location.pathname
+                .substring(1)
+                .toLowerCase()}`
             )}
-          </>
+          </Typography>
         )}
       </Box>
     </StyledEngineProvider>
