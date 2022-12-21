@@ -39,7 +39,6 @@ function Series(): ReactElement {
       type="series"
       loading={loading}
       data={series}
-      // getDataList={seriesStore.getSeriesList}
       search={
         <Search disabled={loading} getDataList={seriesStore.getSeriesList} />
       }

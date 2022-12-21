@@ -42,7 +42,6 @@ function Comics(): ReactElement {
       search={
         <Search disabled={loading} getDataList={comicsStore.getComicsList} />
       }
-      // getDataList={comicsStore.getComicsList}
       pagination={
         <Pagination
           count={Math.ceil(comicsTotal / 20)}

@@ -1,6 +1,6 @@
 // React
 import React, { ReactElement } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 // MUI
 import {

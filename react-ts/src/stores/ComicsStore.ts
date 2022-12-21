@@ -51,11 +51,11 @@ class ComicsStore {
       runInAction(() => {
         this.comics = comics;
       });
-    } catch (error: any) {
+    } catch (error) {
       console.error(error);
 
       runInAction(() => {
-        this.error = error.message;
+        this.error = (error as Error).message;
       });
     } finally {
       runInAction(() => {
@@ -77,11 +77,11 @@ class ComicsStore {
       runInAction(() => {
         this.comic = comic;
       });
-    } catch (error: any) {
+    } catch (error) {
       console.error(error);
 
       runInAction(() => {
-        this.error = error.message;
+        this.error = (error as Error).message;
       });
     } finally {
       runInAction(() => {

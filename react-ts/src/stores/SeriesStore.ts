@@ -51,11 +51,11 @@ class SeriesStore {
       runInAction(() => {
         this.series = series;
       });
-    } catch (error: any) {
+    } catch (error) {
       console.error(error);
 
       runInAction(() => {
-        this.error = error.message;
+        this.error = (error as Error).message;
       });
     } finally {
       runInAction(() => {
@@ -77,11 +77,11 @@ class SeriesStore {
       runInAction(() => {
         this.serial = serial;
       });
-    } catch (error: any) {
+    } catch (error) {
       console.error(error);
 
       runInAction(() => {
-        this.error = error.message;
+        this.error = (error as Error).message;
       });
     } finally {
       runInAction(() => {
