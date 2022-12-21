@@ -1,66 +1,70 @@
 // React
-import React, { ChangeEvent, ReactElement, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { ChangeEvent, ReactElement, useMemo, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // MUI
-import {
-  Button,
-  StyledEngineProvider,
-  TextField,
-  Toolbar
-} from '@mui/material';
+import { StyledEngineProvider, TextField, Toolbar } from '@mui/material';
 
 // i18n
 import { useTranslation } from 'react-i18next';
 
-// Store
-import searchStore from 'stores/SearchStore';
+// Debounce
+import debounce from 'lodash.debounce';
 
 // SCSS
 import styles from './Search.module.scss';
 
 interface SearchProps {
-  getList?: (offset: number, nameStartsWith?: string) => void;
+  disabled?: boolean;
+  getDataList?: (offset: number, nameStartsWith?: string) => void;
 }
 
-function Search({ getList }: SearchProps): ReactElement {
-  const location = useLocation();
-
+function Search({ disabled, getDataList }: SearchProps): ReactElement {
   const { t } = useTranslation();
 
-  const [text, setText] = useState<string>('');
-  const { searchedText } = searchStore;
+  const location = useLocation();
+
+  const navigate = useNavigate();
+
+  const params = new URLSearchParams(location.search);
+
+  const handleChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    getDataList?.(0, event.target.value);
+
+    navigate(
+      `${location.pathname}?page=1${
+        event.target.value ? `&search=${event.target.value}` : ''
+      }`
+    );
+  };
+
+  const debouncedResults = useMemo(() => {
+    return debounce(handleChange, 3000);
+  }, []);
 
   useEffect(() => {
-    setText(searchedText);
-  }, [searchedText]);
+    return () => {
+      debouncedResults.cancel();
+    };
+  });
 
   return (
     <StyledEngineProvider injectFirst>
       <Toolbar className={styles.search}>
         <TextField
+          disabled={disabled}
           placeholder={`${t('main.search.placeholder.part1')} ${t(
             `main.search.placeholder.part2.${location.pathname
               .substring(1)
               .toLowerCase()}`
           )} ${t('main.search.placeholder.part3')}`}
+          defaultValue={params.get('search')}
           size="small"
-          value={text}
-          onChange={(
-            event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-          ) => setText(event.target.value)}
+          onChange={debouncedResults}
           className={styles.textField}
         />
-        <Button
-          variant="contained"
-          onClick={() => {
-            searchStore.setSearchedText(text);
-            getList?.(0, text);
-          }}
-          className={styles.btn}
-        >
-          {t('main.search.button')}
-        </Button>
       </Toolbar>
     </StyledEngineProvider>
   );

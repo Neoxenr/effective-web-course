@@ -30,7 +30,7 @@ class CharactersStore {
   @action
   getCharactersList = async (
     offset: number = 0,
-    nameStartsWith?: string
+    nameStartsWith?: string | null
   ): Promise<void> => {
     try {
       this.loading = true;

@@ -11,3 +11,4 @@ export type {
   GetSerialResponseDto
 } from './dto';
 export type { Card } from './card';
+export type { Page } from './page';

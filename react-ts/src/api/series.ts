@@ -5,7 +5,7 @@ import axios from './helpers/axios';
 export default {
   async getSeriesList(
     offset: number,
-    nameStartsWith?: string
+    nameStartsWith?: string | null
   ): Promise<GetAllSeriesResponseDto> {
     const response = await axios.get(
       `v1/public/series?${

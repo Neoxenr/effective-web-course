@@ -30,7 +30,7 @@ class ComicsStore {
   @action
   getComicsList = async (
     offset: number = 0,
-    nameStartsWith?: string
+    nameStartsWith?: string | null
   ): Promise<void> => {
     try {
       this.loading = true;
