@@ -5,7 +5,7 @@ import axios from './helpers/axios';
 export default {
   async getComicsList(
     offset: number,
-    nameStartsWith?: string
+    nameStartsWith?: string | null
   ): Promise<GetAllComicsResponseDto> {
     const response = await axios.get(
       `v1/public/comics?${

@@ -3,23 +3,6 @@
   justify-content: space-between;
 
   .textField {
-    width: 80%;
-  }
-
-  .btn {
-    width: 15%;
-  }
-}
-
-@media screen and (max-width: 460px) {
-  .search {
-    .textField > div {
-      font-size: 14px;
-      width: 95%;
-    }
-    
-    .btn {
-      font-size: 12px;
-    }
+    width: 100%;
   }
 }

@@ -14,13 +14,13 @@ import {
 // i18n
 import { useTranslation } from 'react-i18next';
 
-// Store
-import searchStore from 'stores/SearchStore';
+// Types
+import { Page } from 'types';
 
 // SCSS
 import styles from './Header.module.scss';
 
-const pages = [
+const pages: Page[] = [
   { path: '/favorites', name: 'favorites' },
   { path: '/characters', name: 'characters' },
   { path: '/comics', name: 'comics' },
@@ -38,16 +38,16 @@ function Header(): ReactElement {
             <img src="/marvel_logo.svg" alt="logo" className={styles.logo} />
             <Toolbar className={styles.linkContainer}>
               {pages.map((page) => (
-                <NavLink
-                  key={page.name}
-                  to={page.path}
-                  onClick={() => searchStore.setSearchedText('')}
-                  className={styles.link}
-                >
+                <NavLink key={page.name} to={page.path} className={styles.link}>
                   {({ isActive }) => (
                     <Typography
                       className={styles.text}
                       variant={isActive ? 'subtitle2' : 'subtitle1'}
+                      onClick={(event) => {
+                        if (isActive) {
+                          event.preventDefault();
+                        }
+                      }}
                     >
                       {t(`header.navigation.${page.name}`)}
                     </Typography>

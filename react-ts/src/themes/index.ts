@@ -3,7 +3,6 @@ import { createTheme } from '@mui/material';
 
 export const lightTheme = createTheme({
   typography: {
-    button: { color: '#fff' },
     subtitle1: { color: '#ffff00' },
     subtitle2: { color: '#fff' },
     body2: { color: '#666' }
@@ -15,17 +14,17 @@ export const lightTheme = createTheme({
           backgroundColor: '#ff0000'
         }
       }
-    },
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          backgroundColor: '#ffa500',
-          ':hover': {
-            backgroundColor: '#ffa500',
-            opacity: 0.8
-          }
-        }
-      }
     }
+  }
+});
+
+export const darkTheme = createTheme({
+  palette: {
+    mode: 'dark'
+  },
+  typography: {
+    subtitle1: { color: '#ffff00' },
+    subtitle2: { color: '#fff' },
+    body2: { color: '#666' }
   }
 });

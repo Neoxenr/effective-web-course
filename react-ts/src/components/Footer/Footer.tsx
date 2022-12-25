@@ -7,7 +7,8 @@ import {
   Toolbar,
   Typography,
   Link,
-  StyledEngineProvider
+  StyledEngineProvider,
+  Box
 } from '@mui/material';
 
 // i18n
@@ -15,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 
 // Components
 import Language from '../Language/Language';
+import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
 
 // SCSS
 import styles from './Footer.module.scss';
@@ -41,7 +43,10 @@ function Footer(): ReactElement {
             </Typography>
           </Link>
         </Toolbar>
-        <Language />
+        <Box className={styles.additional} component="div">
+          <ThemeSwitcher />
+          <Language />
+        </Box>
       </AppBar>
     </StyledEngineProvider>
   );

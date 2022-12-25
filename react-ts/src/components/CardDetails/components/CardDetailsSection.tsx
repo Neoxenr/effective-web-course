@@ -28,7 +28,7 @@ function CardDetailsSection({
   return (
     <StyledEngineProvider injectFirst>
       <Grid xs={3} item>
-        <Typography variant="h6" className={styles.title}>
+        <Typography variant="h5" className={styles.title}>
           {t(`header.navigation.${title}`)}
         </Typography>
         <Box component="div" className={styles.linkContainer}>

@@ -7,7 +7,7 @@ import axios from './helpers/axios';
 export default {
   async getCharactersList(
     offset: number,
-    nameStartsWith?: string
+    nameStartsWith?: string | null
   ): Promise<GetAllCharactersResponseDto> {
     const response = await axios.get(
       `v1/public/characters?${

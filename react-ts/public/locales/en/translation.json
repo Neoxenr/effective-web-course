@@ -17,8 +17,7 @@
           "series": "Series"
         },
         "part3": "by Name"
-      },
-      "button": "Search"
+      }
     },
     "content": {
       "cardDetails": {
@@ -41,6 +40,7 @@
       "label": "Language",
       "en": "English",
       "ru": "Russian"
-    }
+    },
+    "theme": "Dark theme"
   }
 }

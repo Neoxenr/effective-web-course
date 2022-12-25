@@ -1,12 +1,12 @@
 // React
 import React, { ReactElement, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // MobX
 import { observer } from 'mobx-react-lite';
 
 // Store
 import seriesStore from 'stores/SeriesStore';
-import searchStore from 'stores/SearchStore';
 
 // MUI
 import { Pagination } from '@mui/material';
@@ -15,15 +15,19 @@ import { Pagination } from '@mui/material';
 import { Cards, Search, Alert } from 'components';
 
 function Series(): ReactElement {
+  const location = useLocation();
+
+  const navigate = useNavigate();
+
+  const params = new URLSearchParams(location.search);
+
+  const page = +(params.get('page') ?? 1);
+
   const { loading, error } = seriesStore;
   const { seriesTotal, series } = seriesStore;
 
-  const { searchedText } = searchStore;
-
-  const [page, setPage] = React.useState(1);
-
   useEffect(() => {
-    seriesStore.getSeriesList((page - 1) * 20, searchedText);
+    seriesStore.getSeriesList((page - 1) * 20, params.get('search'));
   }, [page]);
 
   if (error) {
@@ -35,13 +39,21 @@ function Series(): ReactElement {
       type="series"
       loading={loading}
       data={series}
-      search={<Search getList={seriesStore.getSeriesList} />}
+      search={
+        <Search disabled={loading} getDataList={seriesStore.getSeriesList} />
+      }
       pagination={
         <Pagination
           count={Math.ceil(seriesTotal / 20)}
           siblingCount={0}
           page={page}
-          onChange={(_, value) => setPage(value)}
+          onChange={(_, value) => {
+            const query = new URLSearchParams(location.search);
+
+            query.set('page', value.toString());
+
+            navigate(`/series?${query}`);
+          }}
           className="pagination"
         />
       }
