@@ -1,0 +1,37 @@
+.card {
+  height: 100%;
+
+  .area {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+
+    .icon {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+  }
+
+  .description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  
+  .title {
+    @extend .description;
+    -webkit-line-clamp: 1;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .card {
+    width: 100%;
+    max-width: none;
+  }
+}

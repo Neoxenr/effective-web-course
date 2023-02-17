@@ -1,0 +1,46 @@
+{
+  "header": {
+    "navigation": {
+      "favorites": "Favorites",
+      "characters": "Characters",
+      "comics": "Comics",
+      "series": "Series"
+    }
+  },
+  "main": {
+    "search": {
+      "placeholder": {
+        "part1": "Search for",
+        "part2": {
+          "characters": "Characters",
+          "comics": "Comics",
+          "series": "Series"
+        },
+        "part3": "by Name"
+      }
+    },
+    "content": {
+      "cardDetails": {
+        "description": "Description did not found",
+        "comics": "Comics did not found",
+        "series": "Series did not found",
+        "characters": "Characters did not found"
+      },
+      "cards": {
+        "favorites": "Favorites did not found",
+        "characters": "Characters did not found",
+        "comics": "Comics did not found",
+        "series": "Series did not found"
+      }
+    }
+  },
+  "footer": {
+    "info": "Data provided by Marvel. © ",
+    "lang": {
+      "label": "Language",
+      "en": "English",
+      "ru": "Russian"
+    },
+    "theme": "Dark theme"
+  }
+}

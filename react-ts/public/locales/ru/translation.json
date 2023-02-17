@@ -1,0 +1,46 @@
+{
+  "header": {
+    "navigation": {
+      "favorites": "Избранное",
+      "characters": "Персонажи",
+      "comics": "Комиксы",
+      "series": "Фильмы"
+    }
+  },
+  "main": {
+    "search": {
+      "placeholder": {
+        "part1": "Найти",
+        "part2": {
+          "characters": "персонажей",
+          "comics": "комиксы",
+          "series": "фильмы"
+        },
+        "part3": "по названию"
+      }
+    },
+    "content": {
+      "cardDetails": {
+        "description": "Описание не найдено",
+        "comics": "Комиксы не найдены",
+        "series": "Фильмы не найдены",
+        "characters": "Персонажи не найдены"
+      },
+      "cards": {
+        "favorites": "Избранное не найдено",
+        "characters": "Персонажи не найдены",
+        "comics": "Комиксы не найдены",
+        "series": "Фильмы не найдены"
+      }
+    }
+  },
+  "footer": {
+    "info": "Данные защищены Marvel. © ",
+    "lang": {
+      "label": "Язык",
+      "en": "Английский",
+      "ru": "Русский"
+    },
+    "theme": "Темная тема"
+  }
+}

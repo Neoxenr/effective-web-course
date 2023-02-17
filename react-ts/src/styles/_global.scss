@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+
+  body {
+    position: relative;
+    min-height: 100%;
+  }
+}
+
+.spinner {
+  margin: 50px auto 0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5%;
+}
+
+.not-found {
+  margin: 20px auto 0;
+}
+
+@media screen and (max-width: 700px) {
+  .pagination {
+    margin-bottom: 10%;
+  }
+}
