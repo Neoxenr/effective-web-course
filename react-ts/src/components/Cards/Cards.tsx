@@ -17,7 +17,7 @@ import { useTranslation } from 'react-i18next';
 import { Card as CardType } from 'types';
 
 // Components
-import { Card } from 'components';
+import Card from '../Card/Card';
 
 // SCSS
 import styles from './Cards.module.scss';
